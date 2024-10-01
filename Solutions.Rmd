@@ -12,6 +12,7 @@ library(tidyr)
 ```{r}
 Trash1 <- read_excel("Trash.xlsx", sheet = 1, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
   janitor::clean_names()
+Trash1 <- drop_na(Trash1, dumpster)
 Trash1
 ```
 
