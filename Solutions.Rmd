@@ -1,0 +1,17 @@
+---
+title: "h2"
+output: html_document
+date: "2024-09-30"
+---
+
+```{r setup, include=FALSE}
+library(readxl)
+library(tidyr)
+```
+
+```{r}
+Trash1 <- read_excel("Trash.xlsx", sheet = 1, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
+  janitor::clean_names()
+Trash1
+```
+
