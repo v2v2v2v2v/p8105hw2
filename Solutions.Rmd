@@ -10,9 +10,13 @@ library(tidyr)
 ```
 
 ```{r}
-MrT <- read_excel("Trash.xlsx", sheet = 1, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
+MrT <- read_excel("TrashNew.xlsx", sheet = 1, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
   janitor::clean_names() |>
   drop_na(dumpster)
 MrT
+ProfT <- read_excel("TrashNew.xlsx", sheet = 2, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
+  janitor::clean_names() |>
+  drop_na(dumpster)
+ProfT
 ```
 
