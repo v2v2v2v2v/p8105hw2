@@ -7,16 +7,22 @@ date: "2024-09-30"
 ```{r setup, include=FALSE}
 library(readxl)
 library(tidyr)
+library(tidyverse)
 ```
 
 ```{r}
 MrT <- read_excel("TrashNew.xlsx", sheet = 1, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
   janitor::clean_names() |>
-  drop_na(dumpster)
+  drop_na(dumpster) |>
+  mutate(sports_balls = as.integer(sports_balls))
 MrT
 ProfT <- read_excel("TrashNew.xlsx", sheet = 2, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
   janitor::clean_names() |>
   drop_na(dumpster)
 ProfT
+GwD <- read_excel("TrashNew.xlsx", sheet = 4, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
+  janitor::clean_names() |>
+  drop_na(dumpster)
+GwD
 ```
 
