@@ -14,15 +14,22 @@ library(tidyverse)
 MrT <- read_excel("TrashNew.xlsx", sheet = 1, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
   janitor::clean_names() |>
   drop_na(dumpster) |>
-  mutate(sports_balls = as.integer(sports_balls))
+  mutate(sports_balls = as.integer(sports_balls), year = as.double(year), type = "Mr")
 MrT
-ProfT <- read_excel("TrashNew.xlsx", sheet = 2, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
+ProfT <- read_excel("TrashNew.xlsx", sheet = 2, skip = 1, na = c(NA,"",","), range = cell_cols("A:M")) |>
   janitor::clean_names() |>
-  drop_na(dumpster)
+  drop_na(dumpster) |>
+  filter(dumpster<119, dumpster!=103) |>
+  mutate(type = "ProfT")
 ProfT
-GwD <- read_excel("TrashNew.xlsx", sheet = 4, skip = 1, na = c(NA,"",","), range = cell_cols("A:N")) |>
+GwD <- read_excel("TrashNew.xlsx", sheet = 4, skip = 1, na = c(NA,"",","), range = cell_cols("A:L")) |>
   janitor::clean_names() |>
-  drop_na(dumpster)
+  drop_na(dumpster) |>
+  filter(plastic_bottles > 0) |>
+  mutate(type = "Gwynnda")
 GwD
+combined_df <- bind_rows(MrT, ProfT, GwD)
+combined_df
+
 ```
 
