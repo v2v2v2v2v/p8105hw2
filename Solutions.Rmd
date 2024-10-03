@@ -36,7 +36,9 @@ Professor trash wheel collected a total weight of 216.26 tons. Gwnnyda collected
 a total of 18120 cigarette butts in June of 2022.
 Short description of data: We have data available of 2014 to 2024 for Mr. Trash
 wheel, prof. trash wheel and Gwnnyda. The mean homes powered through all of them
-has come out to be 46 houses.
+has come out to be 46 houses. The fact that Mr. Trash wheel alone has been able
+to provide power to over 27000 houses over the years is great from an
+environmental sense.
 
 
 ```{r}
@@ -76,7 +78,7 @@ star breaker a lot of times but David who never got the title won the whole seas
 shows that getting star baker in episodes and winning the series is not strongly
 associated. We see that in season 8 the winners and runner ups had gotten the most star
 bakers. Generally, we can say that more star bakers is more chance making it to the 
-finale.
+finale. Hence, it is hard to predict a winner based on star baker.
 
 ```{R}
 viewers = read_csv("viewers.csv")
