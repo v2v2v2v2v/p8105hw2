@@ -19,17 +19,51 @@ MrT
 ProfT <- read_excel("TrashNew.xlsx", sheet = 2, skip = 1, na = c(NA,"",","), range = cell_cols("A:M")) |>
   janitor::clean_names() |>
   drop_na(dumpster) |>
-  filter(dumpster<119, dumpster!=103) |>
+  filter(dumpster<119) |>
   mutate(type = "ProfT")
 ProfT
 GwD <- read_excel("TrashNew.xlsx", sheet = 4, skip = 1, na = c(NA,"",","), range = cell_cols("A:L")) |>
   janitor::clean_names() |>
   drop_na(dumpster) |>
-  filter(plastic_bottles > 0) |>
   mutate(type = "Gwynnda")
 GwD
-combined_df <- bind_rows(MrT, ProfT, GwD)
+combined_df = bind_rows(MrT, ProfT, GwD)
 combined_df
+summary(combined_df)
 
 ```
+Professor trash wheel collected a total weight of 216.26 tons. Gwnnyda collected
+a total of 18120 cigarette butts in June of 2022.
+Short description of data: We have data available of 2014 to 2024 for Mr. Trash
+wheel, prof. trash wheel and Gwnnyda. The mean homes powered through all of them
+has come out to be 46 houses.
 
+
+```{r}
+
+results = read_csv("results.csv", skip =2) |>
+  janitor::clean_names() 
+bakes = read_csv("bakes.csv") |>
+  janitor::clean_names() 
+progress1 = merge(bakes, results, by = c("baker","series","episode"))
+bakers_info = read_csv("bakers.csv") |>
+  janitor::clean_names() |>
+  separate(baker_name, into = c("baker", "last_name"), sep = " ") |>
+  unite(description, last_name, baker_age, baker_occupation,hometown, sep=", ") |>
+  select(baker, description)
+results910 = read_csv("results.csv", skip =2) |>
+  janitor::clean_names() |>
+  filter(series>8)
+
+progress = merge(progress1, results910, by=c('baker','series','episode','technical','result'), all=TRUE)
+print(progress)
+
+df = merge(bakers_info, progress, by= "baker", all = TRUE)
+df
+
+s510_star = read_csv("results.csv", skip = 2) |>
+  janitor::clean_names() |>
+  select(baker, series, episode, result) |>
+  filter(series>4, result == "STAR BAKER")
+s510_star
+```
