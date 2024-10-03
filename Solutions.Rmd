@@ -60,10 +60,28 @@ print(progress)
 
 df = merge(bakers_info, progress, by= "baker", all = TRUE)
 df
+```
 
+```{R}
 s510_star = read_csv("results.csv", skip = 2) |>
   janitor::clean_names() |>
   select(baker, series, episode, result) |>
   filter(series>4, result == "STAR BAKER")
-
 ```
+
+About star baker- yes there were some surprises. For example, Richard got star baker quite
+a few times in his season. Yet, he lost to Nancy who only got it once. Tom in season 7 got
+star baker twice but got eliminated soon. In season 10, Steph and Alice did well and got
+star breaker a lot of times but David who never got the title won the whole season. This
+shows that getting star baker in episodes and winning the series is not strongly
+associated. We see that in season 8 the winners and runner ups had gotten the most star
+bakers. Generally, we can say that more star bakers is more chance making it to the 
+finale.
+
+```{R}
+viewers = read_csv("viewers.csv")
+viewers
+summary(viewers)
+```
+
+Average in season 1 = 2.875 while average in season 5 = 10.039
