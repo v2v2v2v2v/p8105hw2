@@ -38,7 +38,7 @@ Short description of data: We have data available of 2014 to 2024 for Mr. Trash
 wheel, prof. trash wheel and Gwnnyda. The mean homes powered through all of them
 has come out to be 46 houses. The fact that Mr. Trash wheel alone has been able
 to provide power to over 27000 houses over the years is great from an
-environmental sense.
+environmental sense. A summary is provided in the above code.
 
 
 ```{r}
