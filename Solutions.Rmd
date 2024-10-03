@@ -65,5 +65,5 @@ s510_star = read_csv("results.csv", skip = 2) |>
   janitor::clean_names() |>
   select(baker, series, episode, result) |>
   filter(series>4, result == "STAR BAKER")
-s510_star
+
 ```
